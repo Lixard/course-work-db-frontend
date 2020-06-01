@@ -7,6 +7,7 @@ import { HomeComponent } from './home.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [HomeComponent],
@@ -15,7 +16,8 @@ import {MatButtonModule} from "@angular/material/button";
     HomeRoutingModule,
     MatCardModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule,
   ]
 })
 export class HomeModule {}
