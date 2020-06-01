@@ -24,6 +24,7 @@ function createWindow(): BrowserWindow {
       allowRunningInsecureContent: (serve) ? true : false,
     },
   });
+  // win.setMenuBarVisibility(false);
 
   if (serve) {
 
