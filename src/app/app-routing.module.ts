@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'appointment',
+    path: 'appointments',
     loadChildren: () => import('./pages/appointment-pages/appointment-pages-routing.module').then(m => m.AppointmentPagesRoutingModule)
   },
 ];
