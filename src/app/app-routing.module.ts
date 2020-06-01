@@ -13,6 +13,22 @@ const routes: Routes = [
     path: 'appointments',
     loadChildren: () => import('./pages/appointment-pages/appointment-pages-routing.module').then(m => m.AppointmentPagesRoutingModule)
   },
+  {
+    path: 'doctors',
+    loadChildren: () => import('./pages/doctor-pages/doctor-pages-routing.module').then(m => m.DoctorPagesRoutingModule)
+  },
+  {
+    path: 'drugs',
+    loadChildren: () => import('./pages/drug-pages/drug-pages-routing.module').then(m => m.DrugPagesRoutingModule)
+  },
+  {
+    path: 'diagnoses',
+    loadChildren: () => import('./pages/diagnosis-pages/diagnosis-pages-routing.module').then(m => m.DiagnosisPagesRoutingModule)
+  },
+  {
+    path: 'patients',
+    loadChildren: () => import('./pages/patient-pages/patient-pages-routing.module').then(m => m.PatientPagesRoutingModule)
+  }
 ];
 
 @NgModule({
