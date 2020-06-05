@@ -1,7 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import {AppointmentListComponent} from './appointment-list/appointment-list.component';
 import {AddAppointmentComponent} from "./add-appointment/add-appointment.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatCardModule} from "@angular/material/card";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -10,7 +16,18 @@ import {AddAppointmentComponent} from "./add-appointment/add-appointment.compone
     AppointmentListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    BrowserAnimationsModule
+  ],
+  exports: [
+    AddAppointmentComponent,
+    AppointmentListComponent
   ]
 })
 export class AppointmentPagesModule { }

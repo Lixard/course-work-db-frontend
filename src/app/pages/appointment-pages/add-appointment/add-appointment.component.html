@@ -1,1 +1,14 @@
-<p>add-appointment works!</p>
+<div class="register-form" fxLayout fxLayoutAlign="center center">
+  <form [formGroup]="form">
+    <mat-card>
+      <mat-card-content>
+        <div fxLayout="column">
+          <mat-form-field>
+            <mat-label>Some Field</mat-label>
+            <input matInput formControlName="someField">
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
+</div>

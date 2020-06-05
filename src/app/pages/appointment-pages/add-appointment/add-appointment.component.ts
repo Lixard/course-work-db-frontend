@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-add-appointment',
@@ -7,9 +8,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AddAppointmentComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
+    this.buildFrom();
   }
 
+  ngOnInit(): void {
+    this.form.reset();
+  }
+
+
+  private buildFrom(): void {
+    this.form = this.fb.group({
+      someField: this.fb.control(null)
+    });
+  }
 }
