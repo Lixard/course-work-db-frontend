@@ -9,33 +9,33 @@
   <table [dataSource]="dataSource" mat-table>
 
     <ng-container matColumnDef="appointmentId">
-      <th *matHeaderCellDef mat-header-cell>Appointment ID</th>
-      <td *matCellDef="let appointment" mat-cell> {{appointment.appointmentId}} </td>
+      <th *matHeaderCellDef mat-header-cell>№</th>
+      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.appointmentId}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="patientId">
-      <th *matHeaderCellDef mat-header-cell> Patient ID</th>
-      <td *matCellDef="let appointment" mat-cell> {{appointment.patientId}} </td>
+    <ng-container matColumnDef="patient">
+      <th *matHeaderCellDef mat-header-cell>Пациент</th>
+      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.patient.lastName}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="doctorId">
-      <th *matHeaderCellDef mat-header-cell> Doctor ID</th>
-      <td *matCellDef="let appointment" mat-cell> {{appointment.doctorId}} </td>
+    <ng-container matColumnDef="doctor">
+      <th *matHeaderCellDef mat-header-cell>Доктор</th>
+      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.doctor.lastName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="place">
-      <th *matHeaderCellDef mat-header-cell> Place</th>
-      <td *matCellDef="let appointment" mat-cell> {{appointment.place}} </td>
+      <th *matHeaderCellDef mat-header-cell>Место</th>
+      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.place}} </td>
     </ng-container>
 
     <ng-container matColumnDef="appointmentDate">
-      <th *matHeaderCellDef mat-header-cell> Appointment Date</th>
-      <td *matCellDef="let appointment" mat-cell> {{appointment.appointmentDate}} </td>
+      <th *matHeaderCellDef mat-header-cell>Дата</th>
+      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.appointmentDate}} </td>
     </ng-container>
 
     <ng-container matColumnDef="symptoms">
-      <th *matHeaderCellDef mat-header-cell> Symptoms</th>
-      <td *matCellDef="let appointment" mat-cell> {{appointment.symptoms}} </td>
+      <th *matHeaderCellDef mat-header-cell>Симптомы</th>
+      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.symptoms}} </td>
     </ng-container>
 
     <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>

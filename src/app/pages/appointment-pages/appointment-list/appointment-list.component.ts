@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AppointmentService} from "../../../core/services/appointment.service";
-import {Appointment} from "../../../core/models/appointment.model";
 import {MatTableDataSource} from "@angular/material/table";
+import {ComplicatedAppointment} from "../../../core/models/appointment.model";
 
 @Component({
   selector: 'app-appointment-list',
@@ -10,15 +10,15 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class AppointmentListComponent implements OnInit {
 
-  dataSource: MatTableDataSource<Appointment>;
-  displayColumns: string[] = ['appointmentId', 'patientId', 'doctorId', 'place', 'appointmentDate', 'symptoms'];
+  dataSource: MatTableDataSource<ComplicatedAppointment>;
+  displayColumns: string[] = ['appointmentId', 'patient', 'doctor', 'place', 'appointmentDate', 'symptoms'];
 
   constructor(private appointmentService: AppointmentService) {
   }
 
   ngOnInit(): void {
-    this.appointmentService.getAppointments().subscribe(
-      values => this.dataSource = new MatTableDataSource<Appointment>(values)
+    this.appointmentService.getComplicatedAppointments().subscribe(
+      values => (this.dataSource = new MatTableDataSource<ComplicatedAppointment>(values))
     );
   }
 
