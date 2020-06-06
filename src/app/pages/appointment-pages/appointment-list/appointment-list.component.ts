@@ -25,6 +25,10 @@ export class AppointmentListComponent implements OnInit {
       values => {
         this.dataSource = new MatTableDataSource<ComplicatedAppointment>(values);
         this.dataSource.sort = this.sort;
+        this.dataSource.filterPredicate = (data: any, filter) => {
+          const dataStr = JSON.stringify(data).toLowerCase();
+          return dataStr.indexOf(filter) != -1;
+        }
       }
     );
   }
