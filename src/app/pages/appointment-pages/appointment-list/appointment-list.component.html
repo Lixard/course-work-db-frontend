@@ -1,1 +1,38 @@
-<p>appointment-list works!</p>
+<!--suppress AngularUndefinedBinding -->
+<div class="mat-elevation-z4">
+  <table [dataSource]="dataSource" mat-table>
+
+    <ng-container matColumnDef="appointmentId">
+      <th *matHeaderCellDef mat-header-cell>Appointment ID</th>
+      <td *matCellDef="let appointment" mat-cell> {{appointment.appointmentId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="patientId">
+      <th *matHeaderCellDef mat-header-cell> Patient ID</th>
+      <td *matCellDef="let appointment" mat-cell> {{appointment.patientId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="doctorId">
+      <th *matHeaderCellDef mat-header-cell> Doctor ID</th>
+      <td *matCellDef="let appointment" mat-cell> {{appointment.doctorId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="place">
+      <th *matHeaderCellDef mat-header-cell> Place</th>
+      <td *matCellDef="let appointment" mat-cell> {{appointment.place}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="appointmentDate">
+      <th *matHeaderCellDef mat-header-cell> Appointment Date</th>
+      <td *matCellDef="let appointment" mat-cell> {{appointment.appointmentDate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="symptoms">
+      <th *matHeaderCellDef mat-header-cell> Symptoms</th>
+      <td *matCellDef="let appointment" mat-cell> {{appointment.symptoms}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+  </table>
+</div>
