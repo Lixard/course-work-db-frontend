@@ -9,6 +9,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -25,11 +26,13 @@ import {MatTableModule} from "@angular/material/table";
     MatInputModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ],
   exports: [
     AddAppointmentComponent,
     AppointmentListComponent
   ]
 })
-export class AppointmentPagesModule { }
+export class AppointmentPagesModule {
+}
