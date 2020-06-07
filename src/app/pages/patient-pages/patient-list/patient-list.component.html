@@ -1,1 +1,64 @@
-<p>patient-list works!</p>
+<!--suppress AngularUndefinedBinding -->
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Search">
+</mat-form-field>
+
+<div>
+  <table [dataSource]="dataSource"
+         mat-table
+         matSort
+         matSortActive="patientId"
+         matSortDirection="asc"
+         matSortDisableClear>
+
+    <ng-container matColumnDef="patientId">
+      <th *matHeaderCellDef mat-sort-header>№</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.patientId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th *matHeaderCellDef mat-sort-header>Фамилия</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th *matHeaderCellDef mat-sort-header>Имя</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="secondName">
+      <th *matHeaderCellDef mat-sort-header>Отчество</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.secondName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sex">
+      <th *matHeaderCellDef mat-sort-header>Пол</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.sex}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="birthday">
+      <th *matHeaderCellDef mat-sort-header>День рождения</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.birthday}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="policy">
+      <th *matHeaderCellDef mat-sort-header>Полис</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.policy}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="serialPassport">
+      <th *matHeaderCellDef mat-sort-header>Серия паспорта</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.serialPassport}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="numberPassport">
+      <th *matHeaderCellDef mat-sort-header>День рождения</th>
+      <td *matCellDef="let patient" mat-cell> {{patient.numberPassport}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+  </table>
+</div>

@@ -2,6 +2,12 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PatientListComponent} from './patient-list/patient-list.component';
 import {PatientProfileComponent} from './patient-profile/patient-profile.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
+import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -10,7 +16,14 @@ import {PatientProfileComponent} from './patient-profile/patient-profile.compone
     PatientProfileComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatSortModule,
   ]
 })
-export class PatientPagesModule { }
+export class PatientPagesModule {
+}
