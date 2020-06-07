@@ -24,13 +24,22 @@ export class AppointmentListComponent implements OnInit {
     this.appointmentService.getComplicatedAppointments().subscribe(
       values => {
         this.dataSource = new MatTableDataSource<ComplicatedAppointment>(values);
+        this.dataSource.sortingDataAccessor = (item, property) => {
+          switch (property) {
+            case 'patient':
+              return item.patient.lastName;
+            case 'doctor':
+              return item.doctor.lastName;
+            default:
+              return item[property];
+          }
+        };
         this.dataSource.sort = this.sort;
         this.dataSource.filterPredicate = (data: any, filter) => {
           const dataStr = JSON.stringify(data).toLowerCase();
           return dataStr.indexOf(filter) != -1;
-        }
-      }
-    );
+        };
+      });
   }
 
   applyFilter($event: KeyboardEvent) {
