@@ -11,7 +11,7 @@ export class DiagnosisService {
   constructor(private http: HttpClient) {
   }
 
-  getDoctors(): Observable<Diagnosis[]> {
+  getDiagnoses(): Observable<Diagnosis[]> {
     return this.http.get<Diagnosis[]>('/api/diagnoses');
   }
 

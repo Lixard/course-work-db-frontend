@@ -1,1 +1,49 @@
-<p>drug-list works!</p>
+<!--suppress AngularUndefinedBinding -->
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Search">
+</mat-form-field>
+
+<div>
+  <table [dataSource]="dataSource"
+         mat-table
+         matSort
+         matSortActive="drugId"
+         matSortDirection="asc"
+         matSortDisableClear>
+
+    <ng-container matColumnDef="drugId">
+      <th *matHeaderCellDef mat-sort-header>№</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.drugId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-sort-header>Название</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="methodOfTaking">
+      <th *matHeaderCellDef mat-sort-header>Способ приема</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.methodOfTaking}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dosage">
+      <th *matHeaderCellDef mat-sort-header>Дозировка</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.dosage}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descriptionOfAction">
+      <th *matHeaderCellDef mat-sort-header>Описание действия</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.descriptionOfAction}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sideEffects">
+      <th *matHeaderCellDef mat-sort-header>Побочные эффекты</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.sideEffects}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+  </table>
+</div>

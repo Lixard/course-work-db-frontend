@@ -1,1 +1,29 @@
-<p>diagnosis-list works!</p>
+<!--suppress AngularUndefinedBinding -->
+
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Search">
+</mat-form-field>
+
+<div>
+  <table [dataSource]="dataSource"
+         mat-table
+         matSort
+         matSortActive="diagnosisId"
+         matSortDirection="asc"
+         matSortDisableClear>
+
+    <ng-container matColumnDef="diagnosisId">
+      <th *matHeaderCellDef mat-sort-header>№</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.diagnosisId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="diagnosisName">
+      <th *matHeaderCellDef mat-sort-header>Имя</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.diagnosisName}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+  </table>
+</div>
