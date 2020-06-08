@@ -33,7 +33,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatSortModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     AddAppointmentComponent,

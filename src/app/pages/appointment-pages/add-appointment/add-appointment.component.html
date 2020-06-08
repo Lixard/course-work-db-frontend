@@ -3,7 +3,7 @@
     <mat-card>
       <mat-card-content>
         <div fxLayout="column">
-          <mat-form-field class="form-field">
+          <mat-form-field>
             <mat-label>Пациент</mat-label>
             <input [matAutocomplete]="auto1"
                    formControlName="patient"
@@ -27,7 +27,7 @@
             >{{form.get('patient').getError('objectNotSet')}}
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="form-field">
+          <mat-form-field>
             <mat-label>Доктор</mat-label>
             <input [matAutocomplete]="auto2"
                    formControlName="doctor"
@@ -57,6 +57,13 @@
                    required>
             <mat-error *ngIf="form.get('place').hasError('required')"
             >Необходимо указать место приема
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Дата приема</mat-label>
+            <input formControlName="date" matInput placeholder="start date" type="datetime-local">
+            <mat-error *ngIf="form.get('date').hasError('required')"
+            >Необходимо указать дату приема
             </mat-error>
           </mat-form-field>
           <mat-form-field>

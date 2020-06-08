@@ -7,6 +7,10 @@ import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {Doctor} from "../../../core/models/doctor.model";
 import {DoctorService} from "../../../core/services/doctor.service";
 import {map, startWith} from "rxjs/operators";
+import {Appointment} from "../../../core/models/appointment.model";
+import {AppointmentService} from "../../../core/services/appointment.service";
+import {Router} from "@angular/router";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-add-appointment',
@@ -27,7 +31,9 @@ export class AddAppointmentComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private patientService: PatientService,
-              private doctorService: DoctorService) {
+              private doctorService: DoctorService,
+              private appointmentService: AppointmentService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -54,6 +60,7 @@ export class AddAppointmentComponent implements OnInit {
 
   selectPatient($event: MatAutocompleteSelectedEvent) {
     console.log($event.option.value);
+    this.selectedPatient = $event.option.value;
     this.form.get('patient').disable();
   }
 
@@ -71,10 +78,22 @@ export class AddAppointmentComponent implements OnInit {
 
   selectDoctor($event: MatAutocompleteSelectedEvent) {
     console.log($event.option.value);
+    this.selectedDoctor = $event.option.value;
     this.form.get('doctor').disable();
   }
 
   register(values) {
+    const dateMoment = moment(values.date);
+    let appointment = {
+      patientId: this.selectedPatient.patientId,
+      doctorId: this.selectedDoctor.doctorId,
+      place: values.place,
+      appointmentDate: dateMoment.format('DD-MM-YYYY HH:mm:ss'),
+      symptoms: values.symptoms
+    } as Appointment
+    this.appointmentService.create(appointment).subscribe(() => {
+      console.log(appointment);
+    });
   }
 
   private buildFrom(): void {
@@ -82,6 +101,7 @@ export class AddAppointmentComponent implements OnInit {
       patient: this.fb.control('', [Validators.required, this.objectSetValidator]),
       doctor: this.fb.control('', [Validators.required, this.objectSetValidator]),
       place: this.fb.control('', Validators.required),
+      date: this.fb.control(null, Validators.required),
       symptoms: this.fb.control('')
     });
   }
