@@ -5,13 +5,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
+import {SexPipePipe} from './pipes/sex-pipe.pipe';
 
 @NgModule({
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
+    SexPipePipe
   ],
   exports: [
-    ToolbarComponent
+    ToolbarComponent,
+    SexPipePipe
   ],
   imports: [
     CommonModule,

@@ -35,7 +35,7 @@
 
     <ng-container matColumnDef="sex">
       <th *matHeaderCellDef mat-sort-header>Пол</th>
-      <td *matCellDef="let patient" mat-cell> {{patient.sex}} </td>
+      <td *matCellDef="let patient" mat-cell> {{patient.sex | sexPipe}} </td>
     </ng-container>
 
     <ng-container matColumnDef="birthday">

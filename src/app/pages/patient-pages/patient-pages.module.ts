@@ -8,6 +8,7 @@ import {MatTableModule} from "@angular/material/table";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSortModule} from "@angular/material/sort";
+import {CoreModule} from "../../core/core.module";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {MatSortModule} from "@angular/material/sort";
     FormsModule,
     BrowserAnimationsModule,
     MatSortModule,
+    CoreModule,
   ]
 })
 export class PatientPagesModule {
