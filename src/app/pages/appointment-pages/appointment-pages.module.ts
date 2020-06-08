@@ -10,6 +10,9 @@ import {MatInputModule} from "@angular/material/input";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import {MatSortModule} from "@angular/material/sort";
     FormsModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatIconModule
   ],
   exports: [
     AddAppointmentComponent,

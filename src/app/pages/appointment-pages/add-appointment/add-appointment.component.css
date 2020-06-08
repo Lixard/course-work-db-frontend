@@ -1,3 +1,20 @@
-.register-form {
+.register {
   height: 55vh;
 }
+
+.form {
+  width: 500px;
+}
+
+span {
+  font-size: 14px;
+}
+
+small {
+  font-size: 10px;
+}
+
+.register-button {
+  text-align: center;
+}
+

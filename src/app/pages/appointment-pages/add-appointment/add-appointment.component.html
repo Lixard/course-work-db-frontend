@@ -1,14 +1,80 @@
-<div class="register-form" fxLayout fxLayoutAlign="center center">
-  <form [formGroup]="form">
+<div class="register" fxLayout fxLayoutAlign="center center">
+  <form [formGroup]="form" class="form">
     <mat-card>
       <mat-card-content>
         <div fxLayout="column">
-          <mat-form-field>
-            <mat-label>Some Field</mat-label>
-            <input matInput formControlName="someField">
+          <mat-form-field class="form-field">
+            <mat-label>Пациент</mat-label>
+            <input [matAutocomplete]="auto1"
+                   formControlName="patient"
+                   matInput
+                   required>
+            <button (click)="clearPatientButton()"
+                    mat-icon-button
+                    matSuffix>
+              <mat-icon>{{'highlight_off'}}</mat-icon>
+            </button>
+            <mat-autocomplete #auto1
+                              (optionSelected)="selectPatient($event)"
+                              [displayWith]="getOptionText"
+                              class="mat-autocomplete-panel">
+              <mat-option *ngFor="let patient of filteredPatientOptions | async" [value]="patient">
+                <span>{{patient.lastName + ' ' + patient.firstName + ' ' + patient.secondName}}</span> |
+                <small>{{patient.birthday}}, {{patient.serialPassport + ' ' + patient.numberPassport}}</small>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="form.get('patient').hasError('objectNotSet')"
+            >{{form.get('patient').getError('objectNotSet')}}
+            </mat-error>
           </mat-form-field>
+          <mat-form-field class="form-field">
+            <mat-label>Доктор</mat-label>
+            <input [matAutocomplete]="auto2"
+                   formControlName="doctor"
+                   matInput
+                   required>
+            <button (click)="clearDoctorButton()"
+                    mat-icon-button
+                    matSuffix>
+              <mat-icon>{{'highlight_off'}}</mat-icon>
+            </button>
+            <mat-autocomplete #auto2
+                              (optionSelected)="selectDoctor($event)"
+                              [displayWith]="getOptionText"
+                              class="mat-autocomplete-panel">
+              <mat-option *ngFor="let doctor of filteredDoctorOptions | async" [value]="doctor">
+                <span>{{doctor.lastName + ' ' + doctor.firstName + ' ' + doctor.secondName}}</span>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="form.get('doctor').hasError('objectNotSet')"
+            >{{form.get('doctor').getError('objectNotSet')}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Место приема</mat-label>
+            <input formControlName="place"
+                   matInput
+                   required>
+            <mat-error *ngIf="form.get('place').hasError('required')"
+            >Необходимо указать место приема
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Симптомы</mat-label>
+            <input formControlName="symptoms" matInput>
+          </mat-form-field>
+
         </div>
       </mat-card-content>
+      <mat-card-actions fxLayout fxLayoutAlign="center">
+        <button (click)="register(form.value)" [disabled]="!form.valid"
+                class="register-button"
+                color="primary"
+                mat-flat-button
+                type="submit"
+        >Отправить
+        </button>
+      </mat-card-actions>
     </mat-card>
   </form>
 </div>
