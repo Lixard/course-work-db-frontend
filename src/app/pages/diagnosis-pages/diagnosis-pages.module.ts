@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule
   ]
 })
 export class DiagnosisPagesModule {
