@@ -3,11 +3,19 @@ import {MatTableDataSource} from "@angular/material/table";
 import {PatientService} from "../../../core/services/patient.service";
 import {Patient} from "../../../core/models/patient.model";
 import {MatSort} from "@angular/material/sort";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-patient-list',
   templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.css']
+  styleUrls: ['./patient-list.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class PatientListComponent implements OnInit {
 
@@ -26,6 +34,7 @@ export class PatientListComponent implements OnInit {
     'serialPassport',
     'numberPassport'
   ];
+  expandedElement: Patient | null;
 
   constructor(private patientService: PatientService) {
   }
@@ -40,5 +49,13 @@ export class PatientListComponent implements OnInit {
   applyFilter($event: KeyboardEvent) {
     const filterValue = ($event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  refresh() {
+    this.patientService.getPatients().subscribe(data => this.dataSource.data = data);
+  }
+
+  delete(element: Patient) {
+    this.patientService.delete(element.patientId).subscribe(() => this.refresh());
   }
 }

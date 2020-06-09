@@ -11,7 +11,8 @@
          matSort
          matSortActive="patientId"
          matSortDirection="asc"
-         matSortDisableClear>
+         matSortDisableClear
+         multiTemplateDataRows>
 
     <ng-container matColumnDef="patientId">
       <th *matHeaderCellDef mat-sort-header>№</th>
@@ -58,7 +59,26 @@
       <td *matCellDef="let patient" mat-cell> {{patient.numberPassport}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="expandedDetail">
+      <td *matCellDef="let element" [attr.colspan]="displayColumns.length" mat-cell>
+        <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+             class="example-element-detail">
+          <div fxLayout="column">
+            <div class="main-info">
+              <button (click)="delete(element)" class="divide" color="primary" mat-raised-button>Удалить</button>
+            </div>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
     <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+    <tr (click)="expandedElement = expandedElement === element ? null : element"
+        *matRowDef="let element; columns: displayColumns;"
+        [class.example-expanded-row]="expandedElement === element"
+        class="example-element-row"
+        mat-row>
+    </tr>
+    <tr *matRowDef="let row; columns: ['expandedDetail'];" class="example-detail-row" mat-row></tr>
   </table>
 </div>
