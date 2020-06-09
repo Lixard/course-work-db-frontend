@@ -23,5 +23,7 @@ export interface ComplicatedAppointment {
 
 export interface SimpleEntity {
   id: number,
-  lastName: string
+  lastName: string,
+  firstName: string,
+  secondName: string
 }

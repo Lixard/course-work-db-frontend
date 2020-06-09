@@ -16,32 +16,38 @@
 
     <ng-container matColumnDef="appointmentId">
       <th *matHeaderCellDef mat-sort-header>№</th>
-      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.appointmentId}} </td>
+      <td *matCellDef="let complicatedAppointment" mat-cell>{{complicatedAppointment.appointmentId}}</td>
     </ng-container>
 
     <ng-container matColumnDef="patient">
       <th *matHeaderCellDef mat-sort-header>Пациент</th>
-      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.patient.lastName}} </td>
+      <td *matCellDef="let complicatedAppointment" mat-cell>
+        {{complicatedAppointment.patient.lastName}} {{complicatedAppointment.patient.firstName.charAt(0)}}
+        .{{complicatedAppointment.patient.secondName.charAt(0)}}.
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="doctor">
       <th *matHeaderCellDef mat-sort-header>Доктор</th>
-      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.doctor.lastName}} </td>
+      <td *matCellDef="let complicatedAppointment" mat-cell>
+        {{complicatedAppointment.doctor.lastName}} {{complicatedAppointment.doctor.firstName.charAt(0)}}
+        .{{complicatedAppointment.doctor.secondName.charAt(0)}}.
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="place">
       <th *matHeaderCellDef mat-sort-header>Место</th>
-      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.place}} </td>
+      <td *matCellDef="let complicatedAppointment" mat-cell>{{complicatedAppointment.place}}</td>
     </ng-container>
 
     <ng-container matColumnDef="appointmentDate">
       <th *matHeaderCellDef mat-sort-header>Дата</th>
-      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.appointmentDate}} </td>
+      <td *matCellDef="let complicatedAppointment" mat-cell>{{complicatedAppointment.appointmentDate}}</td>
     </ng-container>
 
     <ng-container matColumnDef="symptoms">
       <th *matHeaderCellDef mat-sort-header>Симптомы</th>
-      <td *matCellDef="let complicatedAppointment" mat-cell> {{complicatedAppointment.symptoms}} </td>
+      <td *matCellDef="let complicatedAppointment" mat-cell>{{complicatedAppointment.symptoms}}</td>
     </ng-container>
 
     <ng-container matColumnDef="expandedDetail">
