@@ -1,0 +1,28 @@
+<!--suppress AngularUndefinedBinding -->
+<div>
+  <table [dataSource]="dataSource" mat-table>
+
+    <ng-container matColumnDef="select">
+      <th *matHeaderCellDef mat-header-cell>Выбор</th>
+      <td *matCellDef="let row" mat-cell>
+        <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                      (click)="$event.stopPropagation()"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="diagnosisId">
+      <th *matHeaderCellDef mat-header-cell>№</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.diagnosisId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="diagnosisName">
+      <th *matHeaderCellDef mat-header-cell>Имя</th>
+      <td *matCellDef="let diagnosis" mat-cell> {{diagnosis.diagnosisName}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+  </table>
+</div>

@@ -14,7 +14,11 @@ small {
   font-size: 10px;
 }
 
-.register-button {
+.center-button {
   text-align: center;
+}
+
+.ident {
+  margin-top: 10px;
 }
 

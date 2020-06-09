@@ -1,0 +1,47 @@
+<div>
+  <table [dataSource]="dataSource" mat-table>
+
+    <ng-container matColumnDef="select">
+      <th *matHeaderCellDef mat-header-cell>Выбор</th>
+      <td *matCellDef="let row" mat-cell>
+        <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                      (click)="$event.stopPropagation()"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="drugId">
+      <th *matHeaderCellDef mat-header-cell>№</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.drugId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell>Название</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="methodOfTaking">
+      <th *matHeaderCellDef mat-header-cell>Способ приема</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.methodOfTaking}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dosage">
+      <th *matHeaderCellDef mat-header-cell>Дозировка</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.dosage}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descriptionOfAction">
+      <th *matHeaderCellDef mat-header-cell>Описание действия</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.descriptionOfAction}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sideEffects">
+      <th *matHeaderCellDef mat-header-cell>Побочные эффекты</th>
+      <td *matCellDef="let drug" mat-cell> {{drug.sideEffects}} </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayColumns;" mat-row></tr>
+  </table>
+</div>

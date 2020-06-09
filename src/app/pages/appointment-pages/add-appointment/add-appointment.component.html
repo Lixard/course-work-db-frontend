@@ -1,7 +1,8 @@
-<div class="register" fxLayout fxLayoutAlign="center center">
-  <form [formGroup]="form" class="form">
-    <mat-card>
-      <mat-card-content>
+<mat-horizontal-stepper #stepper linear="linear">
+  <mat-step [stepControl]="form">
+    <ng-template matStepLabel>Введите основные данные</ng-template>
+    <div class="register" fxLayout fxLayoutAlign="center center">
+      <form [formGroup]="form" class="form">
         <div fxLayout="column">
           <mat-form-field>
             <mat-label>Пациент</mat-label>
@@ -70,18 +71,52 @@
             <mat-label>Симптомы</mat-label>
             <input formControlName="symptoms" matInput>
           </mat-form-field>
-
         </div>
-      </mat-card-content>
-      <mat-card-actions fxLayout fxLayoutAlign="center">
-        <button (click)="register(form.value)" [disabled]="!form.valid"
-                class="register-button"
-                color="primary"
-                mat-flat-button
-                type="submit"
-        >Отправить
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-</div>
+        <div fxLayout="row" fxLayoutAlign="center">
+          <button [disabled]="!form.valid"
+                  class="center-button"
+                  color="primary"
+                  mat-flat-button
+                  matStepperNext
+          >Далее
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Выберите диагнозы</ng-template>
+    <app-diagnosis-table-for-appointment
+      (selectedDiagnoses)="fillSelectedDiagnoses($event)"></app-diagnosis-table-for-appointment>
+    <div class="ident" fxLayout="row" fxLayoutAlign="center">
+      <button class="center-button"
+              color="primary"
+              mat-flat-button
+              matStepperNext
+      >Далее
+      </button>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Выберите лекарства</ng-template>
+    <app-drug-table-for-appointment (selectedDrugs)="fillSelectedDrugs($event)"></app-drug-table-for-appointment>
+    <button (click)="register(form.value)"
+            class="center-button"
+            color="primary"
+            mat-flat-button
+            matStepperNext
+    >Далее
+    </button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Готово</ng-template>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <p>Прием зарегистрирован!</p>
+      <button color="primary"
+              mat-flat-button
+              routerLink="/">
+        Вернуться на главную страницу
+      </button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

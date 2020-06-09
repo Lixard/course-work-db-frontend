@@ -14,12 +14,19 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatStepperModule} from "@angular/material/stepper";
+import {DrugTableForAppointmentComponent} from './drug-table-for-appointment/drug-table-for-appointment.component';
+import {DiagnosisTableForAppointmentComponent} from './diagnosis-table-for-appointment/diagnosis-table-for-appointment.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
   declarations: [
     AddAppointmentComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    DrugTableForAppointmentComponent,
+    DiagnosisTableForAppointmentComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +43,9 @@ import {MatDividerModule} from "@angular/material/divider";
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    MatStepperModule,
+    MatCheckboxModule,
+    RouterModule,
   ],
   exports: [
     AddAppointmentComponent,

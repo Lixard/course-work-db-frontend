@@ -9,8 +9,11 @@ import {DoctorService} from "../../../core/services/doctor.service";
 import {map, startWith} from "rxjs/operators";
 import {Appointment} from "../../../core/models/appointment.model";
 import {AppointmentService} from "../../../core/services/appointment.service";
-import {Router} from "@angular/router";
 import * as moment from "moment";
+import {Diagnosis} from "../../../core/models/diagnosis.model";
+import {Drug} from "../../../core/models/drug.model";
+import {AppointmentDiagnosesService} from "../../../core/services/appointment-diagnoses.service";
+import {AppointmentDrugsService} from "../../../core/services/appointment-drugs.service";
 
 @Component({
   selector: 'app-add-appointment',
@@ -28,12 +31,15 @@ export class AddAppointmentComponent implements OnInit {
   doctors: Doctor[];
   filteredDoctorOptions: Observable<Doctor[]>;
   selectedDoctor: Doctor;
+  selectedDiagnoses: Diagnosis[] = [];
+  selectedDrugs: Drug[] = [];
 
   constructor(private fb: FormBuilder,
               private patientService: PatientService,
               private doctorService: DoctorService,
               private appointmentService: AppointmentService,
-              private router: Router) {
+              private appointmentDiagnosesService: AppointmentDiagnosesService,
+              private appointmentDrugsService: AppointmentDrugsService) {
   }
 
   ngOnInit(): void {
@@ -91,9 +97,23 @@ export class AddAppointmentComponent implements OnInit {
       appointmentDate: dateMoment.format('DD-MM-YYYY HH:mm:ss'),
       symptoms: values.symptoms
     } as Appointment
-    this.appointmentService.create(appointment).subscribe(() => {
+    this.appointmentService.create(appointment).subscribe(appointment => {
       console.log(appointment);
+      this.selectedDrugs.forEach(value => this.appointmentDrugsService.create(appointment.appointmentId, value.drugId)
+        .subscribe(value => console.log(value)));
+      this.selectedDiagnoses.forEach(value => this.appointmentDiagnosesService.create(appointment.appointmentId, value.diagnosisId)
+        .subscribe(value => console.log(value)));
     });
+  }
+
+  fillSelectedDiagnoses(diagnoses: Diagnosis[]) {
+    this.selectedDiagnoses = diagnoses;
+    console.log(this.selectedDiagnoses);
+  }
+
+  fillSelectedDrugs(drugs: Drug[]) {
+    this.selectedDrugs = drugs;
+    console.log(this.selectedDrugs);
   }
 
   private buildFrom(): void {
@@ -117,4 +137,5 @@ export class AddAppointmentComponent implements OnInit {
   private doctorFilter(value: string): Doctor[] {
     return this.doctors.filter((s) => new RegExp(value, 'gi').test(s.lastName + ' ' + s.firstName + ' ' + s.secondName));
   }
+
 }
