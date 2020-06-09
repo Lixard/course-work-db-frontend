@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AppointmentService} from "../../../core/services/appointment.service";
-import {MatTableDataSource} from "@angular/material/table";
+import {MatTable, MatTableDataSource} from "@angular/material/table";
 import {ComplicatedAppointment} from "../../../core/models/appointment.model";
 import {MatSort} from "@angular/material/sort";
 import {animate, state, style, transition, trigger} from "@angular/animations";
@@ -29,6 +29,8 @@ export class AppointmentListComponent implements OnInit {
   expandedElement: ComplicatedAppointment | null;
 
   diagnoses: Diagnosis[];
+
+  @ViewChild(MatTable) table: MatTable<ComplicatedAppointment[]>;
 
   constructor(private appointmentService: AppointmentService,
               private appointmentDiagnosesService: AppointmentDiagnosesService,
@@ -66,7 +68,13 @@ export class AppointmentListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  deleteAppointment() {
+  refresh() {
+    this.appointmentService.getComplicatedAppointments().subscribe((data: ComplicatedAppointment[]) => {
+      this.dataSource.data = data;
+    });
+  }
 
+  deleteAppointment(element: ComplicatedAppointment) {
+    this.appointmentService.delete(element.appointmentId).subscribe(() => this.refresh());
   }
 }
