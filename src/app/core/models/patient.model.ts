@@ -11,7 +11,7 @@ export interface Patient {
 }
 
 export enum Sex {
-  MALE = 'M',
-  FEMALE = 'F',
-  UNDEFINED = 'U'
+  MALE = 'MALE',
+  FEMALE = 'FEMALE',
+  UNDEFINED = 'UNDEFINED'
 }

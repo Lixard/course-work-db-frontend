@@ -5,7 +5,7 @@ import {PatientProfileComponent} from './patient-profile/patient-profile.compone
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSortModule} from "@angular/material/sort";
 import {CoreModule} from "../../core/core.module";
@@ -13,13 +13,18 @@ import {MatCardModule} from "@angular/material/card";
 import {FlexModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {PatientAppointmentsListComponent} from './patient-profile/patient-appointments-list/patient-appointments-list.component';
+import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
   declarations: [
     PatientListComponent,
     PatientProfileComponent,
-    PatientAppointmentsListComponent
+    PatientAppointmentsListComponent,
+    AddPatientDialogComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +38,10 @@ import {PatientAppointmentsListComponent} from './patient-profile/patient-appoin
     MatCardModule,
     FlexModule,
     MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatOptionModule,
+    MatSelectModule,
   ]
 })
 export class PatientPagesModule {

@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Создание доктора</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input formControlName="lastName" matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input formControlName="firstName" matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Отчество</mat-label>
+        <input formControlName="secondName" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Пол</mat-label>
+        <mat-select formControlName="sex" required>
+          <mat-option *ngFor="let sex of sexes" [value]="sex">{{ sex | sexEnumPipe}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Дата рождения</mat-label>
+        <input formControlName="birthday" matInput placeholder="start date" required type="date">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Полис</mat-label>
+        <input formControlName="policy" matInput required>
+        <mat-error *ngIf="form.get('policy').hasError('maxlength')"
+        >Должен быть 16 символов
+        </mat-error>
+        <mat-error *ngIf="form.get('policy').hasError('minlength')"
+        >Должен быть 16 символов
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Серия паспорта</mat-label>
+        <input formControlName="serial" matInput required>
+        <mat-error *ngIf="form.get('serial').hasError('maxlength')"
+        >Должен быть 4 символа
+        </mat-error>
+        <mat-error *ngIf="form.get('serial').hasError('minlength')"
+        >Должен быть 4 символа
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Номер паспорта</mat-label>
+        <input formControlName="number" matInput required>
+        <mat-error *ngIf="form.get('serial').hasError('maxlength')"
+        >Должен быть 4 символа
+        </mat-error>
+        <mat-error *ngIf="form.get('serial').hasError('minlength')"
+        >Должен быть 4 символа
+        </mat-error>
+      </mat-form-field>
+      <button (click)="register(form.value)" [disabled]="!form.valid" color="primary" mat-dialog-close
+              mat-raised-button>Создать
+      </button>
+    </div>
+  </form>
+</div>

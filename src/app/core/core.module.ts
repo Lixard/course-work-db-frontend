@@ -6,15 +6,18 @@ import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {SexPipePipe} from './pipes/sex-pipe.pipe';
+import {SexEnumPipePipe} from './pipes/sex-enum-pipe.pipe';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
-    SexPipePipe
+    SexPipePipe,
+    SexEnumPipePipe
   ],
   exports: [
     ToolbarComponent,
-    SexPipePipe
+    SexPipePipe,
+    SexEnumPipePipe
   ],
   imports: [
     CommonModule,
@@ -24,4 +27,5 @@ import {SexPipePipe} from './pipes/sex-pipe.pipe';
     MatIconModule
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

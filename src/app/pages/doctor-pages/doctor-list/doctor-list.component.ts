@@ -4,6 +4,8 @@ import {MatSort} from "@angular/material/sort";
 import {DoctorService} from "../../../core/services/doctor.service";
 import {Doctor} from "../../../core/models/doctor.model";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatDialog} from "@angular/material/dialog";
+import {AddDoctorDialogComponent} from "../add-doctor-dialog/add-doctor-dialog.component";
 
 @Component({
   selector: 'app-doctor-list',
@@ -31,7 +33,8 @@ export class DoctorListComponent implements OnInit {
   expandedElement: Doctor | null;
 
 
-  constructor(private doctorService: DoctorService) {
+  constructor(private doctorService: DoctorService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -54,5 +57,10 @@ export class DoctorListComponent implements OnInit {
 
   delete(element: Doctor) {
     this.doctorService.delete(element.doctorId).subscribe(() => this.refresh());
+  }
+
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(AddDoctorDialogComponent);
+    dialogRef.afterClosed().subscribe(() => this.refresh());
   }
 }

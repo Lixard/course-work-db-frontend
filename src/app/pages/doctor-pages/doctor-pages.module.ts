@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {DoctorListComponent} from './doctor-list/doctor-list.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
@@ -12,10 +12,12 @@ import {MatCardModule} from "@angular/material/card";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
 import {DoctorAppointmentsListComponent} from './doctor-profile/doctor-appointments-list/doctor-appointments-list.component';
+import {AddDoctorDialogComponent} from './add-doctor-dialog/add-doctor-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
-  declarations: [DoctorListComponent, DoctorProfileComponent, DoctorAppointmentsListComponent],
+  declarations: [DoctorListComponent, DoctorProfileComponent, DoctorAppointmentsListComponent, AddDoctorDialogComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -26,7 +28,9 @@ import {DoctorAppointmentsListComponent} from './doctor-profile/doctor-appointme
     MatSortModule,
     MatCardModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class DoctorPagesModule {

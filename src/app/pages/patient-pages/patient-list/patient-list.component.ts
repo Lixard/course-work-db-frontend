@@ -4,6 +4,8 @@ import {PatientService} from "../../../core/services/patient.service";
 import {Patient} from "../../../core/models/patient.model";
 import {MatSort} from "@angular/material/sort";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatDialog} from "@angular/material/dialog";
+import {AddPatientDialogComponent} from "../add-patient-dialog/add-patient-dialog.component";
 
 @Component({
   selector: 'app-patient-list',
@@ -36,7 +38,8 @@ export class PatientListComponent implements OnInit {
   ];
   expandedElement: Patient | null;
 
-  constructor(private patientService: PatientService) {
+  constructor(private patientService: PatientService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -57,5 +60,10 @@ export class PatientListComponent implements OnInit {
 
   delete(element: Patient) {
     this.patientService.delete(element.patientId).subscribe(() => this.refresh());
+  }
+
+  registerPatient() {
+    const matDialogRef = this.dialog.open(AddPatientDialogComponent);
+    matDialogRef.afterClosed().subscribe(() => this.refresh());
   }
 }
