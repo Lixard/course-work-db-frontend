@@ -9,7 +9,6 @@ export interface Appointment {
 
 export interface ComplicatedAppointment {
   appointmentId: number,
-  patientId: number
   patient: SimpleEntity,
   doctor: SimpleEntity,
   place: string,
