@@ -27,7 +27,7 @@ export class DiagnosisService {
     return this.http.put<Diagnosis>(`/api/diagnoses/${id}`, diagnosis);
   }
 
-  delete(id: number): void {
-    this.http.delete<void>(`/api/diagnoses/${id}`);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/diagnoses/${id}`);
   }
 }

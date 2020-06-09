@@ -27,7 +27,7 @@ export class DoctorService {
     return this.http.put<Doctor>(`/api/doctors/${id}`, doctor);
   }
 
-  delete(id: number): void {
-    this.http.delete<void>(`/api/doctors/${id}`);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/doctors/${id}`);
   }
 }
