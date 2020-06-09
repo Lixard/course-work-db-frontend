@@ -9,6 +9,9 @@ import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSortModule} from "@angular/material/sort";
 import {CoreModule} from "../../core/core.module";
+import {MatCardModule} from "@angular/material/card";
+import {FlexModule} from "@angular/flex-layout";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -25,6 +28,9 @@ import {CoreModule} from "../../core/core.module";
     BrowserAnimationsModule,
     MatSortModule,
     CoreModule,
+    MatCardModule,
+    FlexModule,
+    MatButtonModule,
   ]
 })
 export class PatientPagesModule {

@@ -1,1 +1,13 @@
-<p>patient-profile works!</p>
+<mat-card fxLayout="column" fxLayoutAlign="center center">
+  <mat-card-title>{{patient.lastName}} {{patient.firstName}} {{patient.secondName}}</mat-card-title>
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <p>Пол: {{patient.sex | sexPipe}}</p>
+    <p>Дата рождения: {{patient.birthday}}</p>
+    <p>Полис: {{patient.policy}}</p>
+    <p>Серия номер паспорта: {{patient.serialPassport}} {{patient.numberPassport}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="primary" mat-raised-button>Изменить</button>
+    <button color="primary" mat-raised-button>Удалить</button>
+  </mat-card-actions>
+</mat-card>
