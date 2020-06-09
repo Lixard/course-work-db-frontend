@@ -23,6 +23,14 @@ export class AppointmentService {
     return this.http.get<Appointment[]>(`/api/patients/${patientId}/appointments`);
   }
 
+  getPatientComplicatedAppointments(patientId: number): Observable<ComplicatedAppointment[]> {
+    return this.http.get<ComplicatedAppointment[]>(`/api/patients/${patientId}/appointments/complicated`);
+  }
+
+  getDoctorComplicatedAppointments(doctorId: number): Observable<ComplicatedAppointment[]> {
+    return this.http.get<ComplicatedAppointment[]>(`api/doctors/${doctorId}/appointments/complicated`);
+  }
+
   getById(id: number): Observable<Appointment> {
     return this.http.get<Appointment>(`/api/appointments/${id}`)
   }
