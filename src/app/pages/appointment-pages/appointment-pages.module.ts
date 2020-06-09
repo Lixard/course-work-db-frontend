@@ -13,6 +13,7 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatAutocompleteModule,
     MatButtonModule,
     MatIconModule,
+    MatDividerModule,
   ],
   exports: [
     AddAppointmentComponent,
