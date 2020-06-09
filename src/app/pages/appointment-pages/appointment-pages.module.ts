@@ -13,7 +13,6 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {MatDividerModule} from "@angular/material/divider";
 import {MatStepperModule} from "@angular/material/stepper";
 import {DrugTableForAppointmentComponent} from './drug-table-for-appointment/drug-table-for-appointment.component';
 import {DiagnosisTableForAppointmentComponent} from './diagnosis-table-for-appointment/diagnosis-table-for-appointment.component';
@@ -42,7 +41,6 @@ import {RouterModule} from "@angular/router";
     MatAutocompleteModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule,
     MatStepperModule,
     MatCheckboxModule,
     RouterModule,

@@ -4,7 +4,12 @@ table {
 
 .mat-form-field {
   font-size: 14px;
-  width: 100%;
+  width: 60%;
+}
+
+.add-button {
+  position: absolute;
+  left: 10px;
 }
 
 .example-element-detail {

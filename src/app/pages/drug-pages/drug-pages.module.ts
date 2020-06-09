@@ -8,6 +8,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatButtonModule} from "@angular/material/button";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatButtonModule} from "@angular/material/button";
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule
   ]
 })
 export class DrugPagesModule {

@@ -1,10 +1,10 @@
 <!--suppress AngularUndefinedBinding -->
-
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input (keyup)="applyFilter($event)" matInput placeholder="Search">
-</mat-form-field>
-
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-form-field>
+    <mat-label>Поиск</mat-label>
+    <input (keyup)="applyFilter($event)" matInput placeholder="Попробуй найти что-нибудь">
+  </mat-form-field>
+</div>
 <div>
   <table [dataSource]="dataSource"
          mat-table

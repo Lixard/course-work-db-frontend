@@ -9,6 +9,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatButtonModule} from "@angular/material/button";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatTableModule,
     MatSortModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    FlexLayoutModule
   ]
 })
 export class DiagnosisPagesModule {
