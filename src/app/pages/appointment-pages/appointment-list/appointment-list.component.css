@@ -9,7 +9,6 @@ table {
 
 .example-element-detail {
   overflow: hidden;
-  display: flex;
 }
 
 tr.example-detail-row {
@@ -29,5 +28,10 @@ tr.example-element-row:not(.example-expanded-row):hover {
 }
 
 .main-info {
-  margin-bottom: 100px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.divide {
+  margin-bottom: 5px;
 }

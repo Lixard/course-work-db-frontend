@@ -50,11 +50,44 @@
              class="example-element-detail">
           <div fxLayout="column">
             <div class="main-info">
-              {{element.doctor.lastName}}, {{element.patient.lastName}}
+              <table>
+                <caption>Выставленные диагнозы</caption>
+                <tr>
+                  <th mat-header-cell="id">id</th>
+                  <th mat-header-cell="name">Название</th>
+                </tr>
+                <tr *ngFor="let diagnosis of element.diagnoses">
+                  <td>{{diagnosis.diagnosisId}}</td>
+                  <td>{{diagnosis.diagnosisName}}</td>
+                </tr>
+              </table>
+              <table style="margin-top: 20px">
+                <caption>Выписанные лекарства</caption>
+                <tr>
+                  <th mat-header-cell="id">id</th>
+                  <th mat-header-cell="name">Название</th>
+                  <th mat-header-cell="methodOfTaking">Способ приема</th>
+                  <th mat-header-cell="dosage">Дозировка</th>
+                  <th mat-header-cell="descriptionOfAction">Описание действия</th>
+                  <th mat-header-cell="sideEffects">Побочные эффекты</th>
+                </tr>
+                <tr *ngFor="let drug of element.drugs">
+                  <td>{{drug.drugId}}</td>
+                  <td>{{drug.name}}</td>
+                  <td>{{drug.methodOfTaking}}</td>
+                  <td>{{drug.dosage}}</td>
+                  <td>{{drug.descriptionOfAction}}</td>
+                  <td>{{drug.sideEffects}}</td>
+                </tr>
+              </table>
             </div>
-            <mat-divider></mat-divider>
-            <div fxLayout="row">
-              <button mat-raised-button>Basic</button>
+            <div class="divide" fxLayout="row" fxLayoutGap="10px">
+              <button color="primary" mat-raised-button routerLink="/patients/{{element.patient.id}}">Больше о
+                пациенте
+              </button>
+              <button color="primary" mat-raised-button routerLink="/doctors/{{element.doctor.id}}">Больше о докторе
+              </button>
+              <button (click)="deleteAppointment()" color="primary" mat-raised-button>Удалить</button>
             </div>
           </div>
         </div>

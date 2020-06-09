@@ -1,3 +1,6 @@
+import {Drug} from "./drug.model";
+import {Diagnosis} from "./diagnosis.model";
+
 export interface Appointment {
   appointmentId: number,
   patientId: number,
@@ -13,7 +16,9 @@ export interface ComplicatedAppointment {
   doctor: SimpleEntity,
   place: string,
   appointmentDate: string,
-  symptoms: string
+  symptoms: string,
+  diagnoses: Diagnosis[],
+  drugs: Drug[]
 }
 
 export interface SimpleEntity {
