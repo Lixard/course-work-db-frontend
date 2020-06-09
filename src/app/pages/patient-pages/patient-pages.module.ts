@@ -12,12 +12,14 @@ import {CoreModule} from "../../core/core.module";
 import {MatCardModule} from "@angular/material/card";
 import {FlexModule} from "@angular/flex-layout";
 import {MatButtonModule} from "@angular/material/button";
+import {PatientAppointmentsListComponent} from './patient-profile/patient-appointments-list/patient-appointments-list.component';
 
 
 @NgModule({
   declarations: [
     PatientListComponent,
-    PatientProfileComponent
+    PatientProfileComponent,
+    PatientAppointmentsListComponent
   ],
   imports: [
     CommonModule,
