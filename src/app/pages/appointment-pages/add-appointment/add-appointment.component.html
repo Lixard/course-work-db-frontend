@@ -100,13 +100,15 @@
   <mat-step>
     <ng-template matStepLabel>Выберите лекарства</ng-template>
     <app-drug-table-for-appointment (selectedDrugs)="fillSelectedDrugs($event)"></app-drug-table-for-appointment>
-    <button (click)="register(form.value)"
-            class="center-button"
-            color="primary"
-            mat-flat-button
-            matStepperNext
-    >Далее
-    </button>
+    <div class="ident" fxLayout="row" fxLayoutAlign="center">
+      <button (click)="register(form.value)"
+              class="center-button"
+              color="primary"
+              mat-flat-button
+              matStepperNext
+      >Далее
+      </button>
+    </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Готово</ng-template>
