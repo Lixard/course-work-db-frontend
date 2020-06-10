@@ -4,6 +4,9 @@ import {Drug} from "../../../core/models/drug.model";
 import {DrugService} from "../../../core/services/drug.service";
 import {MatSort} from "@angular/material/sort";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatDialog} from "@angular/material/dialog";
+import {AddDrugDialogComponent} from "../add-drug-dialog/add-drug-dialog.component";
+import {ChangeDrugDialogComponent} from "../change-drug-dialog/change-drug-dialog.component";
 
 @Component({
   selector: 'app-drug-list',
@@ -34,7 +37,8 @@ export class DrugListComponent implements OnInit {
   expandedElement: Drug | null;
 
 
-  constructor(private drugService: DrugService) {
+  constructor(private drugService: DrugService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -55,5 +59,17 @@ export class DrugListComponent implements OnInit {
 
   refresh() {
     this.drugService.getDrugs().subscribe(data => this.dataSource.data = data);
+  }
+
+  createDialog() {
+    const dialogRef = this.dialog.open(AddDrugDialogComponent);
+    dialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  updateDialog(element: Drug) {
+    const dialogRef = this.dialog.open(ChangeDrugDialogComponent, {
+      data: element
+    });
+    dialogRef.afterClosed().subscribe(() => this.refresh());
   }
 }

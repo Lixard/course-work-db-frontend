@@ -1,6 +1,6 @@
 <!--suppress AngularUndefinedBinding -->
 <div fxLayout="row" fxLayoutAlign="center center">
-  <button class="add-button" color="primary" mat-raised-button>Добавить</button>
+  <button (click)="createDialog()" class="add-button" color="primary" mat-raised-button>Добавить</button>
   <mat-form-field>
     <mat-label>Поиск</mat-label>
     <input (keyup)="applyFilter($event)" matInput placeholder="Попробуй найти что-нибудь">
@@ -31,6 +31,7 @@
              class="example-element-detail">
           <div fxLayout="column">
             <div class="main-info">
+              <button (click)="updateDialog(element)" class="divide" color="primary" mat-raised-button>Изменить</button>
               <button (click)="delete(element)" class="divide" color="primary" mat-raised-button>Удалить</button>
             </div>
           </div>

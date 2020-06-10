@@ -14,10 +14,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {DoctorAppointmentsListComponent} from './doctor-profile/doctor-appointments-list/doctor-appointments-list.component';
 import {AddDoctorDialogComponent} from './add-doctor-dialog/add-doctor-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {ChangeDoctorDialogComponent} from './change-doctor-dialog/change-doctor-dialog.component';
 
 
 @NgModule({
-  declarations: [DoctorListComponent, DoctorProfileComponent, DoctorAppointmentsListComponent, AddDoctorDialogComponent],
+  declarations: [DoctorListComponent, DoctorProfileComponent, DoctorAppointmentsListComponent, AddDoctorDialogComponent, ChangeDoctorDialogComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,

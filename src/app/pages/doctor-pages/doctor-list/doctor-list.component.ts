@@ -6,6 +6,7 @@ import {Doctor} from "../../../core/models/doctor.model";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
 import {AddDoctorDialogComponent} from "../add-doctor-dialog/add-doctor-dialog.component";
+import {ChangeDoctorDialogComponent} from "../change-doctor-dialog/change-doctor-dialog.component";
 
 @Component({
   selector: 'app-doctor-list',
@@ -61,6 +62,13 @@ export class DoctorListComponent implements OnInit {
 
   openRegisterDialog() {
     const dialogRef = this.dialog.open(AddDoctorDialogComponent);
+    dialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  openChangeDialog(element) {
+    const dialogRef = this.dialog.open(ChangeDoctorDialogComponent, {
+      data: element
+    });
     dialogRef.afterClosed().subscribe(() => this.refresh());
   }
 }

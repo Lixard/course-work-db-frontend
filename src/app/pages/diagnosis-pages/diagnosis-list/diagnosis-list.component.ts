@@ -4,6 +4,9 @@ import {Diagnosis} from "../../../core/models/diagnosis.model";
 import {DiagnosisService} from "../../../core/services/diagnosis.service";
 import {MatSort} from "@angular/material/sort";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatDialog} from "@angular/material/dialog";
+import {AddDiagnosisDialogComponent} from "../add-diagnosis-dialog/add-diagnosis-dialog.component";
+import {ChangeDiagnosisDialogComponent} from "../change-diagnosis-dialog/change-diagnosis-dialog.component";
 
 @Component({
   selector: 'app-diagnosis-list',
@@ -27,7 +30,8 @@ export class DiagnosisListComponent implements OnInit {
   expandedElement: Diagnosis | null;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private diagnosisService: DiagnosisService) {
+  constructor(private diagnosisService: DiagnosisService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -48,5 +52,17 @@ export class DiagnosisListComponent implements OnInit {
 
   delete(element: Diagnosis) {
     this.diagnosisService.delete(element.diagnosisId).subscribe(() => this.refresh());
+  }
+
+  createDialog() {
+    const dialogRef = this.dialog.open(AddDiagnosisDialogComponent);
+    dialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  updateDialog(element: Diagnosis) {
+    const dialogRef = this.dialog.open(ChangeDiagnosisDialogComponent, {
+      data: element
+    });
+    dialogRef.afterClosed().subscribe(() => this.refresh());
   }
 }

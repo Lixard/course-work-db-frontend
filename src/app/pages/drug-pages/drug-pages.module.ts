@@ -3,16 +3,19 @@ import {CommonModule} from '@angular/common';
 import {DrugListComponent} from './drug-list/drug-list.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {AddDrugDialogComponent} from './add-drug-dialog/add-drug-dialog.component';
+import {ChangeDrugDialogComponent} from './change-drug-dialog/change-drug-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
-  declarations: [DrugListComponent],
+  declarations: [DrugListComponent, AddDrugDialogComponent, ChangeDrugDialogComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -22,7 +25,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatTableModule,
     MatSortModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class DrugPagesModule {

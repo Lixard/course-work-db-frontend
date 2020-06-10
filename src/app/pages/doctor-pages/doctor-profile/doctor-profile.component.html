@@ -1,9 +1,5 @@
 <mat-card fxLayout="column" fxLayoutAlign="center center">
   <mat-card-title>{{doctor.lastName}} {{doctor.firstName}} {{doctor.secondName}}</mat-card-title>
   <mat-card-subtitle>Доктор</mat-card-subtitle>
-  <mat-card-actions>
-    <button color="primary" mat-raised-button>Изменить</button>
-    <button color="primary" mat-raised-button>Удалить</button>
-  </mat-card-actions>
 </mat-card>
 <app-doctor-appointments-list [doctor]="doctor"></app-doctor-appointments-list>

@@ -6,6 +6,7 @@ import {MatSort} from "@angular/material/sort";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPatientDialogComponent} from "../add-patient-dialog/add-patient-dialog.component";
+import {ChangePatientDialogComponent} from "../change-patient-dialog/change-patient-dialog.component";
 
 @Component({
   selector: 'app-patient-list',
@@ -64,6 +65,13 @@ export class PatientListComponent implements OnInit {
 
   registerPatient() {
     const matDialogRef = this.dialog.open(AddPatientDialogComponent);
+    matDialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  changeDialog(element: Patient) {
+    const matDialogRef = this.dialog.open(ChangePatientDialogComponent, {
+      data: element
+    });
     matDialogRef.afterClosed().subscribe(() => this.refresh());
   }
 }

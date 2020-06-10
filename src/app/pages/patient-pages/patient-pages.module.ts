@@ -17,6 +17,7 @@ import {AddPatientDialogComponent} from './add-patient-dialog/add-patient-dialog
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {ChangePatientDialogComponent} from './change-patient-dialog/change-patient-dialog.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatSelectModule} from "@angular/material/select";
     PatientListComponent,
     PatientProfileComponent,
     PatientAppointmentsListComponent,
-    AddPatientDialogComponent
+    AddPatientDialogComponent,
+    ChangePatientDialogComponent
   ],
   imports: [
     CommonModule,

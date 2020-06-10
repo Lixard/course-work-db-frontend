@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Изменение доктора</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input formControlName="lastName" matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input formControlName="firstName" matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Отчество</mat-label>
+        <input formControlName="secondName" matInput>
+      </mat-form-field>
+      <button (click)="register(form.value)" [disabled]="!form.valid" color="primary" mat-dialog-close
+              mat-raised-button>Изменить
+      </button>
+    </div>
+  </form>
+</div>

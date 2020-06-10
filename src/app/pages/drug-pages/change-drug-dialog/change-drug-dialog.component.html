@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Создание лекарства</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-form-field>
+        <mat-label>Название</mat-label>
+        <input formControlName="name" matInput required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Способ приема</mat-label>
+        <input formControlName="methodOfTaking" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Дозировка</mat-label>
+        <input formControlName="dosage" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Предполагаемое действие</mat-label>
+        <input formControlName="descriptionOfAction" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Побочные эффекты</mat-label>
+        <input formControlName="sideEffects" matInput>
+      </mat-form-field>
+      <button (click)="register(form.value)" [disabled]="!form.valid" color="primary" mat-dialog-close
+              mat-raised-button>Изменить
+      </button>
+    </div>
+  </form>
+</div>
