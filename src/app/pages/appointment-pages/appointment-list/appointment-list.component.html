@@ -1,5 +1,6 @@
 <!--suppress AngularUndefinedBinding -->
 <div fxLayout="row" fxLayoutAlign="center center">
+  <button (click)="exportToExcel()" class="add-button" color="primary" mat-raised-button>Экспорт</button>
   <mat-form-field>
     <mat-label>Поиск</mat-label>
     <input (keyup)="applyFilter($event)" matInput placeholder="Попробуй найти что-нибудь">

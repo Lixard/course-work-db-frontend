@@ -1,13 +1,16 @@
 <!--suppress AngularUndefinedBinding -->
 <div fxLayout="row" fxLayoutAlign="center center">
-  <button (click)="openRegisterDialog()" class="add-button" color="primary" mat-raised-button>Добавить</button>
+  <div class="add-button" fxLayout="row" fxLayoutGap="5px">
+    <button (click)="openRegisterDialog()" color="primary" mat-raised-button>Добавить</button>
+    <button (click)="exportToExcel()" color="primary" mat-raised-button>Экспорт</button>
+  </div>
   <mat-form-field>
     <mat-label>Поиск</mat-label>
     <input (keyup)="applyFilter($event)" matInput placeholder="Попробуй найти что-нибудь">
   </mat-form-field>
 </div>
 
-<div>
+<div #TABLE>
   <table [dataSource]="dataSource"
          mat-table
          matSort

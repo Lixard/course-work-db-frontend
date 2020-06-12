@@ -7,6 +7,11 @@ table {
   width: 60%;
 }
 
+.add-button {
+  position: absolute;
+  left: 10px;
+}
+
 .example-element-detail {
   overflow: hidden;
 }

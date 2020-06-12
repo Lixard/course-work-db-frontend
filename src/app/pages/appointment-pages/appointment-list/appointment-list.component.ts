@@ -7,6 +7,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {Diagnosis} from "../../../core/models/diagnosis.model";
 import {AppointmentDiagnosesService} from "../../../core/services/appointment-diagnoses.service";
 import {AppointmentDrugsService} from "../../../core/services/appointment-drugs.service";
+import {DownloadFileService} from "../../../core/services/download-file.service";
 
 @Component({
   selector: 'app-appointment-list',
@@ -34,7 +35,8 @@ export class AppointmentListComponent implements OnInit {
 
   constructor(private appointmentService: AppointmentService,
               private appointmentDiagnosesService: AppointmentDiagnosesService,
-              private appointmentDrugsService: AppointmentDrugsService) {
+              private appointmentDrugsService: AppointmentDrugsService,
+              private downloadFileService: DownloadFileService) {
   }
 
   ngOnInit(): void {
@@ -76,5 +78,10 @@ export class AppointmentListComponent implements OnInit {
 
   deleteAppointment(element: ComplicatedAppointment) {
     this.appointmentService.delete(element.appointmentId).subscribe(() => this.refresh());
+  }
+
+  exportToExcel() {
+    this.appointmentService.getExportFile().subscribe(value =>
+      this.downloadFileService.downLoadFile(value, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'))
   }
 }

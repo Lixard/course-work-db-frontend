@@ -7,6 +7,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
 import {AddDiagnosisDialogComponent} from "../add-diagnosis-dialog/add-diagnosis-dialog.component";
 import {ChangeDiagnosisDialogComponent} from "../change-diagnosis-dialog/change-diagnosis-dialog.component";
+import {DownloadFileService} from "../../../core/services/download-file.service";
 
 @Component({
   selector: 'app-diagnosis-list',
@@ -31,7 +32,8 @@ export class DiagnosisListComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private diagnosisService: DiagnosisService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private downloadFileService: DownloadFileService) {
   }
 
   ngOnInit(): void {
@@ -64,5 +66,10 @@ export class DiagnosisListComponent implements OnInit {
       data: element
     });
     dialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  exportToExcel() {
+    this.diagnosisService.getExportFile().subscribe(value =>
+      this.downloadFileService.downLoadFile(value, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'));
   }
 }

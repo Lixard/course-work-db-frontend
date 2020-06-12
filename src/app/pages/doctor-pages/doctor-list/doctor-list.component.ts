@@ -7,6 +7,7 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
 import {MatDialog} from "@angular/material/dialog";
 import {AddDoctorDialogComponent} from "../add-doctor-dialog/add-doctor-dialog.component";
 import {ChangeDoctorDialogComponent} from "../change-doctor-dialog/change-doctor-dialog.component";
+import {DownloadFileService} from "../../../core/services/download-file.service";
 
 @Component({
   selector: 'app-doctor-list',
@@ -35,7 +36,8 @@ export class DoctorListComponent implements OnInit {
 
 
   constructor(private doctorService: DoctorService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private downloadFileService: DownloadFileService) {
   }
 
   ngOnInit(): void {
@@ -70,5 +72,10 @@ export class DoctorListComponent implements OnInit {
       data: element
     });
     dialogRef.afterClosed().subscribe(() => this.refresh());
+  }
+
+  exportToExcel() {
+    this.doctorService.getExportFile().subscribe(value =>
+      this.downloadFileService.downLoadFile(value, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'));
   }
 }

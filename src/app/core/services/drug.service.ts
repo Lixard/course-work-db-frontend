@@ -11,6 +11,10 @@ export class DrugService {
   constructor(private http: HttpClient) {
   }
 
+  getExportFile(): Observable<any> {
+    return this.http.get('/api/drugs/export', {responseType: 'blob'});
+  }
+
   getDrugs(): Observable<Drug[]> {
     return this.http.get<Drug[]>('/api/drugs');
   }

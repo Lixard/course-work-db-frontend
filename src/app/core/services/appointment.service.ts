@@ -11,6 +11,10 @@ export class AppointmentService {
   constructor(private http: HttpClient) {
   }
 
+  getExportFile(): Observable<any> {
+    return this.http.get('/api/appointments/export', {responseType: 'blob'});
+  }
+
   getAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>('/api/appointments');
   }
