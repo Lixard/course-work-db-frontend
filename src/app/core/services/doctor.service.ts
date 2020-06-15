@@ -15,6 +15,10 @@ export class DoctorService {
     return this.http.get('/api/doctors/export', {responseType: 'blob'});
   }
 
+  getDoctorPatientsForPeriod(doctorId: number, dateStart, dateEnd): Observable<any> {
+    return this.http.get(`/api/doctors/${doctorId}/patients/${dateStart}/${dateEnd}/export`, {responseType: 'blob'});
+  }
+
   getDoctors(): Observable<Doctor[]> {
     return this.http.get<Doctor[]>('/api/doctors');
   }

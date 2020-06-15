@@ -15,10 +15,11 @@ import {DoctorAppointmentsListComponent} from './doctor-profile/doctor-appointme
 import {AddDoctorDialogComponent} from './add-doctor-dialog/add-doctor-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {ChangeDoctorDialogComponent} from './change-doctor-dialog/change-doctor-dialog.component';
+import {ExportDoctorPatientsDialogComponent} from './export-doctor-patients-dialog/export-doctor-patients-dialog.component';
 
 
 @NgModule({
-  declarations: [DoctorListComponent, DoctorProfileComponent, DoctorAppointmentsListComponent, AddDoctorDialogComponent, ChangeDoctorDialogComponent],
+  declarations: [DoctorListComponent, DoctorProfileComponent, DoctorAppointmentsListComponent, AddDoctorDialogComponent, ChangeDoctorDialogComponent, ExportDoctorPatientsDialogComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
